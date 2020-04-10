@@ -1,0 +1,51 @@
+#!/usr/bin/env python
+
+# Copyright(c) 2020  Max Planck Gesellschaft
+# Author: Vincent Berenz
+
+import fyplot
+import math
+
+class A1:
+    def __init__(self):
+        self.value=0
+        self.incr=0.01
+    def __call__(self):
+        self.value+=self.incr
+        return math.cos(self.value)
+
+class A2:
+    def __init__(self):
+        self.value=0
+        self.incr=0.05
+    def __call__(self):
+        self.value+=self.incr
+        return math.sin(self.value)
+
+class B:
+    def __init__(self):
+        self.value=0
+        self.incr=0.005
+    def __call__(self):
+        self.value+=self.incr
+        return math.tanh(self.value)
+
+
+if __name__ == '__main__':
+
+    title = "fyplot demo"
+    windows_size = (800,800)
+    period = 50 # period at which the functions will be called
+    
+    plot = fyplot.Plot(title,period,windows_size)
+
+    subplot1 = ( (A1(),(255,0,0)), # first plot will get data from A1, and will be red
+                 (A2(),(0,255,0)) ) # second plot will get data from A2 and will green
+    plot.add_subplot( (-1.0,1.0), # y axis goes between -1.1 and +1.1
+                     500, # x axis will display 5 data points
+                     subplot1 ) # will display values returned by A1 and A2
+
+    subplot2 = ( (B(),(0,0,255)), )
+    plot.add_subplot((0.0,1.0),1000,subplot2)
+
+    plot.start() # just close the plot to exit
