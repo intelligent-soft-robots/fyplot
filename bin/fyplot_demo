@@ -42,14 +42,14 @@ if __name__ == '__main__':
 
     subplot1 = ( (A1(),(255,0,0)), # first plot will get data from A1, and will be red
                  (A2(),(0,255,0)) ) # second plot will get data from A2 and will green
-    plot.add_subplot( (-1.0,1.0), # y axis goes between -1.1 and +1.1
-                     500, # x axis will display 5 data points
+    plot.add_subplot( (-1.0,1.0), # y axis goes between -1.0 and +1.0
+                     500, # x axis will display 500 data points (moving window)
                      subplot1 ) # will display values returned by A1 and A2
 
     subplot2 = ( (B(),(0,0,255)), )
     plot.add_subplot((0.0,1.0),1000,subplot2)
 
-    # starting to plot
+    # starting to plot (non blocking function)
     plot.start() 
 
     # running for 10 seconds
