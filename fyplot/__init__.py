@@ -37,11 +37,12 @@ class _Channel:
         
     def update(self):
         v = self._get_function()
-        self._data.append(v)
-        self._curve.setData(self._data)
-        if self._first:
-            self._plot.enableAutoRange('xy', False)
-            self._first=False
+        if v is not None:
+            self._data.append(v)
+            self._curve.setData(self._data)
+            if self._first:
+                self._plot.enableAutoRange('xy', False)
+                self._first=False
         
 
 class _Subplot:
