@@ -5,6 +5,7 @@
 
 import fyplot
 import math
+import time
 
 class A1:
     def __init__(self):
@@ -48,4 +49,14 @@ if __name__ == '__main__':
     subplot2 = ( (B(),(0,0,255)), )
     plot.add_subplot((0.0,1.0),1000,subplot2)
 
-    plot.start() # just close the plot to exit
+    # starting to plot
+    plot.start() 
+
+    # running for 10 seconds
+    time_start = time.time()
+    while time.time()-time_start<3:
+        time.sleep(1)
+
+    # exit
+    plot.stop()
+    

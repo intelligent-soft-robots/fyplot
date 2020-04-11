@@ -27,7 +27,10 @@ class _Channel:
 
     def get_color(self):
         return self._color
-        
+
+    def stop(self):
+        self._plot.close()
+    
     def set_curve(self,curve,plot):
         self._curve = curve
         self._plot = plot
@@ -99,7 +102,14 @@ class Plot():
                 channel.set_curve(curve,p)
             self._win.nextRow()
 
-    def start(self):
+    def stop(self):
+        self._application.quit()
+        self._thread.join()
+        
+    def _run(self):
         self._setup()
         self._application.exec_()
 
+    def start(self):
+        self._thread = threading.Thread(target=self._run)
+        self._thread.start()
