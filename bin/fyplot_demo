@@ -3,7 +3,7 @@
 # Copyright(c) 2020  Max Planck Gesellschaft
 # Author: Vincent Berenz
 
-import fyplot
+from fyplot import function_plot
 import math
 import time
 
@@ -34,11 +34,11 @@ class B:
 
 if __name__ == '__main__':
 
-    title = "fyplot demo"
+    title = "function_plot demo"
     windows_size = (800,800)
     period = 50 # period at which the functions will be called
     
-    plot = fyplot.Plot(title,period,windows_size)
+    plot = function_plot.Plot(title,period,windows_size)
 
     subplot1 = ( (A1(),(255,0,0)), # first plot will get data from A1, and will be red
                  (A2(),(0,255,0)) ) # second plot will get data from A2 and will green

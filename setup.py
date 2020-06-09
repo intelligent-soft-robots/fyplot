@@ -13,7 +13,7 @@ setup(name = "fyplot",
       long_description="see https://fyplot.readthedocs.io/en/latest/",
       author="Vincent Berenz",
       author_email="vberenz@tuebingen.mpg.de",
-      scripts=['bin/fyplot_demo'],
+      scripts=['bin/fyplot_demo','bin/fyplot_demo2'],
       install_requires = ["pyqtgraph"]
 )
 

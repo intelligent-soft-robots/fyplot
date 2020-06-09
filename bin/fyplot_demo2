@@ -1,0 +1,44 @@
+#!/usr/bin/env python
+
+# Copyright(c) 2020  Max Planck Gesellschaft
+# Author: Vincent Berenz
+
+from fyplot import dict_plot
+import math
+import time
+
+if __name__ == '__main__':
+
+    config = dict_plot.Config()
+    
+    config.channels = ["L_EB","R_EB","X"]
+    config.limits = { "L_EB":(-2,2) ,
+                      "R_EB":(-2,2),
+                      "X":(0,10) }
+    config.slots = {"L_EB":["current","target","desired"],
+                    "R_EB":["current","target","desired"],
+                    "X":["x"]}
+    config.slots_colors = {
+        "x":(0,255,255),
+        "current":(255,0,0) ,
+        "target":(255,255,255) , 
+        "desired":(150,150,150)
+    }
+    config.data_size = 100
+    config.title = "TEST"
+    config.windows_size = [1000,1000]
+    
+    def testing():
+        time_start = time.time()
+        x = 0.0
+        while time.time()-time_start < 5 :
+            x+=0.01
+            data = { 
+                "L_EB" : {"current":math.cos(x) , "target":math.sin(x), "desired":0.2 } , 
+                "R_EB" : {"current":math.sin(x) , "target":math.cos(x), "desired":0.2 } ,
+                "X" : {"x":x}
+            }
+            dict_plot.set_data(data)
+            time.sleep(0.005)
+            
+    dict_plot.start_plotting(config,testing)

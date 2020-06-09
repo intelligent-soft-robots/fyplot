@@ -13,12 +13,17 @@ Installation
 
    # pip install fyplot
 
-After install you may run the demo:
+After install you may run the demos:
 
 .. sourcecode:: none
 
    # fyplot_demo
 
+.. sourcecode:: none
+
+   # fyplot_demo2
+
+   
 Source
 ------
 
@@ -28,8 +33,12 @@ Source
 Documentation
 -------------
 
-The full API (1 constructor and 3 methods, really), is covered by the demo:
+The full API (1 constructor and 3 methods, really), is covered by the demos:
 
 .. literalinclude:: ../../bin/fyplot_demo
    :language: python
 
+.. literalinclude:: ../../bin/fyplot_demo2
+   :language: python
+
+	      
