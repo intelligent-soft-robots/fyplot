@@ -1,7 +1,7 @@
 # Copyright(c) 2020  Max Planck Gesellschaft
 # Author: Vincent Berenz
 
-from pyqtgraph.Qt import QtGui, QtCore, QtWidgets
+from pyqtgraph.Qt import QtCore, QtWidgets
 import pyqtgraph as pg
 from collections import deque
 import threading,math,time
@@ -21,8 +21,8 @@ class Config:
         self.limits = {}
 
         
-_APPLICATION = QtGui.QApplication([])
-_WIN = pg.GraphicsWindow(title="pasta")
+_APPLICATION = QtWidgets.QApplication([])
+_WIN = pg.GraphicsLayoutWidget(title="pasta")
 _WIN.resize(1,1)
 _WIN.setWindowTitle("")
 
@@ -92,6 +92,7 @@ def _init():
             _PLOTS[channel]=curves
         _WIN.nextRow()
 
+    _WIN.show()
     _CONFIG.start = True
 
     
@@ -131,7 +132,7 @@ def start_plotting(config,target_function):
     _start(target_function)
     import sys
     if (sys.flags.interactive != 1) or not hasattr(QtCore, 'PYQT_VERSION'):
-        QtGui.QApplication.instance().exec_()
+        QtWidgets.QApplication.instance().exec_()
 
 
     
